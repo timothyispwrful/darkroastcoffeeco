@@ -1,2 +1,38 @@
-<h1>Ordering#new</h1>
-<p>Find me in app/views/ordering/new.html.erb</p>
+
+<div class="order new">
+  <h2>Order Drink</h2>
+
+  <%= form_for(@order, :url => ordering_index_path, :method => 'post') do |f| %>
+
+    <table summary="Subject form fields">
+      <tr>
+        <th>Drink Name</th>
+        <td><%= f.text_field(:item_name) %></td>
+      </tr>
+      <tr>
+        <th>Size</th>
+        <td><%= f.text_field(:size) %></td>
+      </tr>
+      <tr>
+        <th>Extra Espresso Shots</th>
+        <td><%= f.text_field(:extraEspressoShots) %></td>
+      </tr>
+      <tr>
+        <th>Milk Type</th>
+        <td><%= f.text_field(:milkType) %></td>
+      </tr>
+      <tr>
+        <th>Additional flavors?</th>
+        <td><%= f.text_field(:flavor) %></td>
+      </tr>
+      <tr>
+        <th>Decaf?</th>
+        <td><%= f.check_box(:decaf) %></td>
+      </tr>
+    </table>
+    <div class="form-buttons">
+      <%= f.submit("Submit Drink") %>
+    </div>
+
+  <% end %>
+</div>
