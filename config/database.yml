@@ -21,7 +21,6 @@ test: &TEST
   password:
 
 production:
-    <<: *default
     adapter: postgresql
     encoding: unicode
     database: <%= ENV['RDS_DB_NAME'] %>
