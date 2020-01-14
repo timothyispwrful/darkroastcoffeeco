@@ -11,7 +11,10 @@
       </tr>
       <tr>
         <th>Size</th>
-        <td><%= f.text_field(:size) %></td>
+        <td><%= f.radio_button(:size, 1) %></td>
+        <td><%= f.radio_button(:size, 2) %></td>
+        <td><%= f.radio_button(:size, 3) %></td>
+        <td><%= f.radio_button(:size, 4) %></td>
       </tr>
       <tr>
         <th>Extra Espresso Shots</th>
@@ -19,7 +22,23 @@
       </tr>
       <tr>
         <th>Milk Type</th>
-        <td><%= f.text_field(:milkType) %></td>
+        <td><%= f.radio_button(:milkType, "Nonfat") %></td>
+
+        <td><%= f.radio_button(:milkType, "1%") %></td>
+
+        <td><%= f.radio_button(:milkType, "2%") %></td>
+
+        <td><%= f.radio_button(:milkType, "Whole Milk") %></td>
+
+        <td><%= f.radio_button(:milkType, "Heavy Cream") %></td>
+
+        <td><%= f.radio_button(:milkType, "Oat Milk") %></td>
+
+        <td><%= f.radio_button(:milkType, "Almond Milk") %></td>
+
+        <td><%= f.radio_button(:milkType, "Cashew Milk") %></td>
+
+        <td><%= f.radio_button(:milkType, "Soy") %></td>
       </tr>
       <tr>
         <th>Additional flavors?</th>
