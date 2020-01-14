@@ -1,8 +1,8 @@
 class OrderingController < ApplicationController
 
-  
-  def index
 
+  def index
+    @orders = Order.sent
   end
 
   def show
