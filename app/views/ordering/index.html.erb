@@ -1,15 +1,15 @@
 <div class="orders index">
-  <h2>Drinks to Make</h2>
+  
+  <%= link_to "Let's Start A New Order!", new_ordering_path, :class => 'action new' %>
 
-  <%= link_to("Add New Order", new_ordering_path, :class => 'action new') %>
-
+  <h2>Drinks Submitted to Store</h2>
   <table class="listing" summary="Order list">
     <tr class="header">
       <th>Drink Name</th>
       <th>Size</th>
-      <th>Extra Espresso Goodness</th>
+      <th>Extra Espresso Shots</th>
       <th>Milk</th>
-      <th>Flavortown</th>
+      <th>Additional Flavors</th>
       <th>Decaf?</th>
     </tr>
     <% @sentOrder.each do |order| %>
@@ -20,13 +20,6 @@
       <td><%= order.milkType %></td>
       <td><%= order.flavor %></td>
       <td class="center"><%= order.decaf ? 'Yes' : 'No' %></td>
-      <td><%= order.id %></td>
-      <td class="actions">
-        <%= button_to "Accept", {:action => 'accept', :id => order.id} %>
-        <%= link_to("Show", '#', :class => 'action show') %>
-        <%= link_to("Edit", '#', :class => 'action edit') %>
-        <%= button_to 'Destroy', {:action => 'delete', :id => order.id}  %>
-      </td>
     </tr>
     <% end %>
   </table>
@@ -38,9 +31,9 @@
     <tr class="header">
       <th>Drink Name</th>
       <th>Size</th>
-      <th>Extra Espresso Goodness</th>
+      <th>Extra Espresso Shots</th>
       <th>Milk</th>
-      <th>Flavortown</th>
+      <th>Additional Flavors</th>
       <th>Decaf?</th>
     </tr>
     <% @acceptedOrder.each do |order| %>
@@ -51,12 +44,6 @@
       <td><%= order.milkType %></td>
       <td><%= order.flavor %></td>
       <td class="center"><%= order.decaf ? 'Yes' : 'No' %></td>
-      <td class="actions">
-      <%= button_to "Complete", {:action => 'complete', :id => order.id} %>
-        <%= link_to("Show", '#', :class => 'action show') %>
-        <%= link_to("Edit", '#', :class => 'action edit') %>
-        <%= button_to 'Destroy', {:action => 'delete', :id => order.id} %>      
-        </td>
     </tr>
     <% end %>
   </table>
@@ -64,14 +51,14 @@
 <br />
 <br />
 
-  <h2>Ready</h2>
+  <h2>Completed Orders</h2>
     <table class="listing" summary="Order list">
     <tr class="header">
       <th>Drink Name</th>
       <th>Size</th>
-      <th>Extra Espresso Goodness</th>
+      <th>Extra Espresso Shots</th>
       <th>Milk</th>
-      <th>Flavortown</th>
+      <th>Additional Flavors</th>
       <th>Decaf?</th>
     </tr>
     <% @readyOrder.each do |order| %>
@@ -83,9 +70,7 @@
       <td><%= order.flavor %></td>
       <td class="center"><%= order.decaf ? 'Yes' : 'No' %></td>
       <td class="actions">
-        <%= link_to("Show", '#', :class => 'action show') %>
-        <%= link_to("Edit", '#', :class => 'action edit') %>
-        <%= button_to 'Destroy', {:action => 'delete', :id => order.id} %>
+      <%= button_to "Remove from List", {:action => 'delete', :id => order.id} %>
       </td>
     </tr>
     <% end %>

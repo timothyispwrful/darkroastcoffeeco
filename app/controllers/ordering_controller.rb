@@ -8,7 +8,9 @@ class OrderingController < ApplicationController
   end
 
   def show
-
+    @sentOrder = Order.sent
+    @acceptedOrder = Order.accepted
+    @readyOrder = Order.ready
   end
 
   def new
@@ -21,7 +23,7 @@ class OrderingController < ApplicationController
     @order.sentToStore = false
     if @order.save
       # redirect_to(ordering_index_path)
-      redirect_to(root_path)
+      redirect_to :action => "show", :id => params[:id]
       else
       puts "We didn't save."
       end
