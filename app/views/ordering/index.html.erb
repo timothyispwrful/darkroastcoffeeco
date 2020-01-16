@@ -52,6 +52,7 @@
       <td><%= order.flavor %></td>
       <td class="center"><%= order.decaf ? 'Yes' : 'No' %></td>
       <td class="actions">
+      <%= button_to "Complete", {:action => 'complete', :id => order.id} %>
         <%= link_to("Show", '#', :class => 'action show') %>
         <%= link_to("Edit", '#', :class => 'action edit') %>
         <%= link_to("Delete", '#', :class => 'action delete') %>

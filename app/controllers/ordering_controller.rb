@@ -19,8 +19,25 @@ class OrderingController < ApplicationController
     @order = Order.find(params[:id])
     @order.orderAccepted = true
     @order.sentToStore = false
-    @order.save
-    redirect_to(root_path)
+    if @order.save
+      # redirect_to(ordering_index_path)
+      redirect_to(root_path)
+      else
+      puts "We didn't save."
+      end
+  end
+
+  def complete
+    @order = Order.find(params[:id])
+    @order.orderAccepted = false
+    @order.sentToStore = false
+    @order.orderReady = true
+    if @order.save
+      # redirect_to(ordering_index_path)
+      redirect_to(root_path)
+      else
+      puts "We didn't save."
+      end
   end
 
   def create
@@ -29,7 +46,6 @@ class OrderingController < ApplicationController
     if @order.save
     # redirect_to(ordering_index_path)
     redirect_to(root_path)
-
     else
     puts "We didn't save."
     end
