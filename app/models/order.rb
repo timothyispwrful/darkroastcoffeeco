@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
 
-    scope :done, lambda {where(:orderReady => true)}
+    scope :ready, lambda {where(:orderReady => true)}
     scope :accepted, lambda {where(:orderAccepted => true)}
     scope :sent, lambda {where(:sentToStore => true)}
 

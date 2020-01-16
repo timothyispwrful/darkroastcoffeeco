@@ -12,7 +12,68 @@
       <th>Flavortown</th>
       <th>Decaf?</th>
     </tr>
-    <% @orders.sent.each do |order| %>
+    <% @sentOrder.each do |order| %>
+    <tr>
+      <td><%= order.item_name %></td>
+      <td><%= order.size %></td>
+      <td><%= order.extraEspressoShots %></td>
+      <td><%= order.milkType %></td>
+      <td><%= order.flavor %></td>
+      <td class="center"><%= order.decaf ? 'Yes' : 'No' %></td>
+      <td><%= order.id %></td>
+      <td class="actions">
+        <%= button_to "Accept", {:action => 'accept', :id => order.id} %>
+        <%= link_to("Show", '#', :class => 'action show') %>
+        <%= link_to("Edit", '#', :class => 'action edit') %>
+        <%= link_to("Delete", '#', :class => 'action delete') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+<br />
+<br />
+
+  <h2>Drinks In Progress</h2>
+    <table class="listing" summary="Order list">
+    <tr class="header">
+      <th>Drink Name</th>
+      <th>Size</th>
+      <th>Extra Espresso Goodness</th>
+      <th>Milk</th>
+      <th>Flavortown</th>
+      <th>Decaf?</th>
+    </tr>
+    <% @acceptedOrder.each do |order| %>
+    <tr>
+      <td><%= order.item_name %></td>
+      <td><%= order.size %></td>
+      <td><%= order.extraEspressoShots %></td>
+      <td><%= order.milkType %></td>
+      <td><%= order.flavor %></td>
+      <td class="center"><%= order.decaf ? 'Yes' : 'No' %></td>
+      <td class="actions">
+        <%= link_to("Show", '#', :class => 'action show') %>
+        <%= link_to("Edit", '#', :class => 'action edit') %>
+        <%= link_to("Delete", '#', :class => 'action delete') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+
+<br />
+<br />
+
+  <h2>Ready</h2>
+    <table class="listing" summary="Order list">
+    <tr class="header">
+      <th>Drink Name</th>
+      <th>Size</th>
+      <th>Extra Espresso Goodness</th>
+      <th>Milk</th>
+      <th>Flavortown</th>
+      <th>Decaf?</th>
+    </tr>
+    <% @readyOrder.each do |order| %>
     <tr>
       <td><%= order.item_name %></td>
       <td><%= order.size %></td>
