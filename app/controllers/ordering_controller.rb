@@ -51,6 +51,11 @@ class OrderingController < ApplicationController
     end
   end
 
+def delete
+  @order = Order.find(params[:id])
+  @order.destroy
+  redirect_to(root_path)
+end
 
 
 
