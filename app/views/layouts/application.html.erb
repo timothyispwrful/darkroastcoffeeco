@@ -10,6 +10,21 @@
   </head>
 
   <body>
+
+  <div class="container">
+  <header>
+  <h1>Darkroast Coffee Co.<%= button_to "Let's Start A New Order!", new_ordering_path, :class => 'action new', :method => :get %></h1>
+  <h5>A demo CRUD application running on AWS for an imaginary coffee shop, on Rails.</h5>
+  </header>
+
+  <main>
     <%= yield %>
+  </main>
+
+  <footer>
+    <!-- Footer content -->
+  </footer>
+</div>
+    
   </body>
 </html>

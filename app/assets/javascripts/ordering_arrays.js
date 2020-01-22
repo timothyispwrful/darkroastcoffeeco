@@ -1,3 +1,3 @@
-var coffee = ["Coffee", "Americano", "Latte", "Cortado", "Cappuccino", "Mocha", "Undertow", "Cold Brew", "Bicern", "Tea"];
+var coffee = ["Coffee", "Americano", "Latte", "Cortado", "Cappuccino", "Mocha", "Cold Brew"];
 var size = ["Small", "Medium", "Large", "All Day"];
-var milk = ["Nonfat", "1%", "2%", "Whole", "Heavy Cream", "Almond Milk", "Soy Milk", "Oat Milk", "Cashew Milk", "None"];
+var milk = ["Nonfat", "1%", "2%", "Whole", "Heavy Cream", "Almond", "Soy", "Oat", "Cashew", "None"];

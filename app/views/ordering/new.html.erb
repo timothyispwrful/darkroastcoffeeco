@@ -1,44 +1,123 @@
 
 <div class="order new">
-  <h2>Order Drink</h2>
+  <h1 class="main-container">Order Drink</h1>
 
   <%= form_for(@order, :url => ordering_index_path, :method => 'post') do |f| %>
 
-    <table summary="Subject form fields">
-      <tr>
-        <th>Drink Name</th>
-        <td class="autocomplete"><%= f.text_field(:item_name) %></td>
-      </tr>
-      <tr>
-        <th>Size</th>
-        <td class="autocomplete"><%= f.text_field(:size) %></td>
-      </tr>
-      <tr>
-        <th>Extra Espresso Shots</th>
-        <td><%= f.text_field(:extraEspressoShots) %></td>
-      </tr>
-      <tr>
-        <th>Milk Type</th>
-        <td class="autocomplete"><%= f.text_field(:milkType) %></td>
-      </tr>
-      <tr>
-        <th>Additional flavors?</th>
-        <td><%= f.text_field(:flavor) %></td>
-      </tr>
-      <tr>
-        <th>Decaf?</th>
-        <td><%= f.check_box(:decaf) %></td>
-      </tr>
-    </table>
+
+      <div class="main-container">
+      <label class="card-ordering">
+          <%= f.radio_button :item_name, "Coffee", :id => "Coffee" %>
+            <img src=<%= asset_path('coffee_raw') %> style="width:100%">
+            <div class="container">
+              <h2>Coffee</h2>
+            </div>
+      </label>
+
+      <label class="card-ordering">
+          <%= f.radio_button :item_name, "Americano", :id => "Americano" %>
+            <img src=<%= asset_path('americano_raw') %> style="width:100%">
+            <div class="container">
+              <h2>Americano</h2>
+            </div>
+      </label>
+
+      <label class="card-ordering">
+          <%= f.radio_button :item_name, "Latte", :id => "Latte" %>
+            <img src=<%= asset_path('latte_raw') %> style="width:100%">
+            <div class="container">
+              <h2>Latte</h2>
+            </div>
+      </label>
+
+      <label class="card-ordering">
+          <%= f.radio_button :item_name, "Cortado", :id => "Cortado" %>
+            <img src=<%= asset_path('cortado_raw') %> style="width:100%">
+            <div class="container">
+              <h2>Cortado</h2>
+            </div>
+      </label>
+
+      <label class="card-ordering">
+          <%= f.radio_button :item_name, "Cappuccino", :id => "Cappuccino" %>
+            <img src=<%= asset_path('cappuccino_raw') %> style="width:100%">
+            <div class="container">
+              <h2>Cappuccino</h2>
+            </div>
+      </label>
+
+      <label class="card-ordering">
+          <%= f.radio_button :item_name, "Mocha", :id => "Mocha" %>
+            <img src=<%= asset_path('mocha_raw') %> style="width:100%">
+            <div class="container">
+              <h2>Mocha</h2>
+            </div>
+      </label>
+
+      <label class="card-ordering">
+          <%= f.radio_button :item_name, "Cold Brew", :id => "Cold Brew" %>
+            <img src=<%= asset_path('coldbrew_raw') %> style="width:100%">
+            <div class="container">
+              <h2>Cold Brew</h2>
+            </div>
+      </label>
+</div>
+<br>
+<div class="main-container">
+  <p>Size:
+          <%= f.radio_button :size, 1, :id => "small" %>
+          <label for="small">Small</label>
+          <%= f.radio_button :size, 2, :id => "medium" %>
+          <label for="medium">Medium</label>
+          <%= f.radio_button :size, 3, :id => "large" %>
+          <label for="large">Large</label>
+          <%= f.radio_button :size, 4, :id => "massive" %>
+          <label for="massive">Massive</label>
+          </p>
+</div>
+<br>
+<div class="main-container">
+  <p>Extra Espresso Shots: <%= f.text_field(:extraEspressoShots) %></p>
+</div>
+<br>
+<div class="main-container">
+  <p>Milk Type:
+          <%= f.radio_button :milkType, "Nonfat", :id => "Nonfat" %>
+          <label for="Nonfat">Nonfat</label>
+          <%= f.radio_button :milkType, "1%", :id => "1%" %>
+          <label for="1%">1%</label>
+          <%= f.radio_button :milkType, "2%", :id => "2%" %>
+          <label for="2%">2%</label>
+          <%= f.radio_button :milkType, "Whole", :id => "Whole" %>
+          <label for="Whole">Whole</label>
+          <%= f.radio_button :milkType, "Heavy Cream", :id => "Heavy Cream" %>
+          <label for="Heavy Cream">Heavy Cream</label>
+          <%= f.radio_button :milkType, "Almond", :id => "Almond" %>
+          <label for="Almond">Almond</label>
+          <%= f.radio_button :milkType, "Soy", :id => "Soy" %>
+          <label for="Soy">Soy</label>
+          <%= f.radio_button :milkType, "Oat", :id => "Oat" %>
+          <label for="Oat">Oat</label>
+          <%= f.radio_button :milkType, "Cashew", :id => "Cashew" %>
+          <label for="Cashew">Cashew</label>
+          <%= f.radio_button :milkType, "None", :id => "None" %>
+          <label for="None">None</label>
+          </p>
+</div>
+<div class="main-container">
+        <p>Additional flavors?
+        <%= f.text_field(:flavor) %></p>
+</div>
+<div class="main-container">
+        <p>Decaf?
+        <%= f.check_box(:decaf) %></p>
+</div>
+<div class="main-container">
     <div class="form-buttons">
       <%= f.submit("Submit Drink To Store") %>
     </div>
+</div>
 
   <% end %>
 
 </div>
-<script>
-autocomplete(document.getElementById("order_item_name"), coffee);
-autocomplete(document.getElementById("order_size"), size);
-autocomplete(document.getElementById("order_milkType"), milk);
-</script>
