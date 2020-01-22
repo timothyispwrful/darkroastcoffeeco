@@ -14,6 +14,10 @@
   font-style: normal;
 }
 
+body {
+  background-color: rgb(26, 26, 26);
+}
+
 /* Flex the drinks. */
 .main-container {
   display: flex;
@@ -71,12 +75,20 @@
   outline: 4px solid rgb(143, 75, 75);
 }
 
-h1, h2, h3, .action, .key {
+h1, h2, h3, h5, .action, .key {
   font-family: SFProText-Heavy;
+  color: white;
 }
 
 label, p  {
   font-family: SFProDisplay-Light;
+  color: white;
+}
+
+input.action.new {
+  background-color: rgb(19, 20, 21);
+  color: white;
+  font-family: SFProText-Heavy;
 }
 
 a {
