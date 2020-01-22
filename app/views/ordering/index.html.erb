@@ -136,6 +136,8 @@
         <%= "No Milk" %>
         <% when "Heavy Cream"%>
         <%= order.milkType %>
+        <% when "Cashew Milk" %>
+        <%= order.milkType %>
       <% else %>
         <%= "#{order.milkType} Milk"%>
       <% end %>
@@ -213,6 +215,8 @@
         <% case order.milkType %>
         <% when "None" %>
         <%= "No Milk" %>
+        <% when "Cashew Milk" %>
+        <%= order.milkType %>
         <% when "Heavy Cream"%>
         <%= order.milkType %>
       <% else %>
