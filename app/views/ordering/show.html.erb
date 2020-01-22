@@ -1,60 +1,165 @@
 <div class="orders index">
 
-  <h2>New Orders</h2>
-  <table class="listing" summary="Order list">
-    <tr class="header">
-      <th>Drink Name</th>
-      <th>Size</th>
-      <th>Extra Espresso Shots</th>
-      <th>Milk</th>
-      <th>Additional Flavors</th>
-      <th>Decaf?</th>
-    </tr>
-    <% @sentOrder.each do |order| %>
-    <tr>
-      <td><%= order.item_name %></td>
-      <td><%= order.size %></td>
-      <td><%= order.extraEspressoShots %></td>
-      <td><%= order.milkType %></td>
-      <td><%= order.flavor %></td>
-      <td class="center"><%= order.decaf ? 'Yes' : 'No' %></td>
-      <td><%= order.id %></td>
-      <td class="actions">
+  <h2 class="main-container">New Orders</h2>
+  <div class="main-container">
+    <% if !@sentOrder.any? %>
+      <p>Nothing to make right now!</p>
+    <% else %>
+      <% @sentOrder.each do |order| %>
+        <div class="card">
+          <img src=
+        <% case order.item_name %>
+          <% when "Coffee" %>
+            <%= asset_path('coffee_raw') %> alt="Cortado" style="width:100%">
+          <% when "Americano" %>
+          <%= asset_path('americano_raw') %> alt="Cortado" style="width:100%">
+          <% when "Latte" %>
+          <%= asset_path('latte_raw') %> alt="Cortado" style="width:100%">
+          <% when "Cortado" %>
+          <%= asset_path('cortado_raw') %> alt="Cortado" style="width:100%">
+          <% when "Cappuccino" %>
+          <%= asset_path('cappuccino_raw') %> alt="Cortado" style="width:100%">
+          <% when "Mocha" %>
+          <%= asset_path('mocha_raw') %> alt="Cortado" style="width:100%">
+          <% when "Cold Brew" %>
+          <%= asset_path('coldbrew_raw') %> alt="Cortado" style="width:100%">
+        <% else %>
+          <%= asset_path('coldbrew_raw') %> alt="Cortado" style="width:100%">
+        <% end %>
+        <div class="container">
+          <h3><%= "#{order.id}: #{order.item_name}" %></h3>
+          <p>
+            <% case order.size %>
+            <% when 1 %>
+            <%= "Small" %>
+            <% when 2 %>
+            <%= "Medium" %>
+            <% when 3 %>
+            <%= "Large" %>
+            <% when 4 %>
+            <%= "Massive" %>
+          <% end %>
+        </p>
+        <% if order.extraEspressoShots > 1 %>
+          <p>
+            <%= "#{order.extraEspressoShots} Extra Shots" %>
+          </p>
+        <% elsif order.extraEspressoShots == 1 %>
+          <p>
+            <%= "#{order.extraEspressoShots} Extra Shot" %>
+          </p>
+        <% else %>
+        <% end %>
+        <p>
+          <% case order.milkType %>
+          <% when "None" %>
+          <%= "No Milk" %>
+          <% when "Heavy Cream"%>
+          <%= order.milkType %>
+        <% else %>
+          <%= "#{order.milkType} Milk"%>
+        <% end %>
+      </p>
+      <% if order.flavor != "" %>
+        <p>
+          <%= order.flavor %>
+        </p>
+      <% end %>
+      <% if order.decaf %>
+        <p>
+          <%= "Decaf" %>
+        </p>
+      <% end %>
+      <div class="main-container">
       <%= button_to "Acknowledge", {:action => 'accept', :id => order.id} %>
-      </td>
-      <td><%= button_to 'Destroy', {:action => 'delete', :id => order.id} %></td>
-    </tr>
-    <% end %>
-  </table>
-<br />
-<br />
-
-  <h2>Acknowledged (In Progress)</h2>
-    <table class="listing" summary="Order list">
-    <tr class="header">
-      <th>Drink Name</th>
-      <th>Size</th>
-      <th>Extra Espresso Shots</th>
-      <th>Milk</th>
-      <th>Additional Flavors</th>
-      <th>Decaf?</th>
-    </tr>
-    <% @acceptedOrder.each do |order| %>
-    <tr>
-      <td><%= order.item_name %></td>
-      <td><%= order.size %></td>
-      <td><%= order.extraEspressoShots %></td>
-      <td><%= order.milkType %></td>
-      <td><%= order.flavor %></td>
-      <td class="center"><%= order.decaf ? 'Yes' : 'No' %></td>
-      <td class="actions">
-      <%= button_to "Complete", {:action => 'complete', :id => order.id} %>
-      <%= button_to 'Destroy', {:action => 'delete', :id => order.id} %>      
-        </td>
-    </tr>
-    <% end %>
-  </table>
+      <%= button_to 'Destroy', {:action => 'delete', :id => order.id} %>
+      </div>
+    </div>
+  </div>
+<% end %>
+<% end %>
+</div>
 
 <br />
 <br />
+
+ <h2 class="main-container">Acknowledged (In Progress)</h2>
+  <div class="main-container">
+    <% if !@acceptedOrder.any? %>
+      <p>Nothing to make right now!</p>
+    <% else %>
+      <% @acceptedOrder.each do |order| %>
+        <div class="card">
+          <img src=
+        <% case order.item_name %>
+          <% when "Coffee" %>
+            <%= asset_path('coffee_raw') %> alt="Cortado" style="width:100%">
+          <% when "Americano" %>
+          <%= asset_path('americano_raw') %> alt="Cortado" style="width:100%">
+          <% when "Latte" %>
+          <%= asset_path('latte_raw') %> alt="Cortado" style="width:100%">
+          <% when "Cortado" %>
+          <%= asset_path('cortado_raw') %> alt="Cortado" style="width:100%">
+          <% when "Cappuccino" %>
+          <%= asset_path('cappuccino_raw') %> alt="Cortado" style="width:100%">
+          <% when "Mocha" %>
+          <%= asset_path('mocha_raw') %> alt="Cortado" style="width:100%">
+          <% when "Cold Brew" %>
+          <%= asset_path('coldbrew_raw') %> alt="Cortado" style="width:100%">
+        <% else %>
+          <%= asset_path('coldbrew_raw') %> alt="Cortado" style="width:100%">
+        <% end %>
+        <div class="container">
+          <h3><%= "#{order.id}: #{order.item_name}" %></h3>
+          <p>
+            <% case order.size %>
+            <% when 1 %>
+            <%= "Small" %>
+            <% when 2 %>
+            <%= "Medium" %>
+            <% when 3 %>
+            <%= "Large" %>
+            <% when 4 %>
+            <%= "Massive" %>
+          <% end %>
+        </p>
+        <% if order.extraEspressoShots > 1 %>
+          <p>
+            <%= "#{order.extraEspressoShots} Extra Shots" %>
+          </p>
+        <% elsif order.extraEspressoShots == 1 %>
+          <p>
+            <%= "#{order.extraEspressoShots} Extra Shot" %>
+          </p>
+        <% else %>
+        <% end %>
+        <p>
+          <% case order.milkType %>
+          <% when "None" %>
+          <%= "No Milk" %>
+          <% when "Heavy Cream"%>
+          <%= order.milkType %>
+        <% else %>
+          <%= "#{order.milkType} Milk"%>
+        <% end %>
+      </p>
+      <% if order.flavor != "" %>
+        <p>
+          <%= order.flavor %>
+        </p>
+      <% end %>
+      <% if order.decaf %>
+        <p>
+          <%= "Decaf" %>
+        </p>
+      <% end %>
+      <div class="main-container">
+      <%= button_to "Complete", {:action => 'accept', :id => order.id} %>
+      <%= button_to 'Destroy', {:action => 'delete', :id => order.id} %>
+      </div>
+    </div>
+  </div>
+<% end %>
+<% end %>
+</div>
 </div>

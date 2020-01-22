@@ -64,7 +64,7 @@
 </div>
 <br>
 <div class="main-container">
-  <p>Size:
+  <p><span class="key">Size:</span>
           <%= f.radio_button :size, 1, :id => "small" %>
           <label for="small">Small</label>
           <%= f.radio_button :size, 2, :id => "medium" %>
@@ -77,11 +77,11 @@
 </div>
 <br>
 <div class="main-container">
-  <p>Extra Espresso Shots: <%= f.text_field(:extraEspressoShots) %></p>
+  <p><span class="key">Extra Espresso Shots:</span> <%= f.text_field(:extraEspressoShots) %></p>
 </div>
 <br>
 <div class="main-container">
-  <p>Milk Type:
+  <p><span class="key">Milk Type:</span>
           <%= f.radio_button :milkType, "Nonfat", :id => "Nonfat" %>
           <label for="Nonfat">Nonfat</label>
           <%= f.radio_button :milkType, "1%", :id => "1%" %>
@@ -105,11 +105,11 @@
           </p>
 </div>
 <div class="main-container">
-        <p>Additional flavors?
+        <p><span class="key">Additional flavors?</span>
         <%= f.text_field(:flavor) %></p>
 </div>
 <div class="main-container">
-        <p>Decaf?
+        <p><span class="key">Decaf?</span>
         <%= f.check_box(:decaf) %></p>
 </div>
 <div class="main-container">

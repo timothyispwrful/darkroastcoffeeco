@@ -1,135 +1,237 @@
 <div class="orders index">
-  <h2>Drinks Submitted to Store</h2>
-  <table class="listing" summary="Order list">
-
-    <div class="main-container">
-    <% @sentOrder.each do |order| %>
-    <div class="card">
-    <img src=
-    <% case order.item_name %>
-      <% when "Coffee" %>
-        <%= asset_path('coffee_raw') %> alt="Cortado" style="width:100%">
-      <% when "Americano" %>
-        <%= asset_path('americano_raw') %> alt="Cortado" style="width:100%">
-      <% when "Latte" %>
-        <%= asset_path('latte_raw') %> alt="Cortado" style="width:100%">
-      <% when "Cortado" %>
-        <%= asset_path('cortado_raw') %> alt="Cortado" style="width:100%">
-      <% when "Cappuccino" %>
-        <%= asset_path('cappuccino_raw') %> alt="Cortado" style="width:100%">
-      <% when "Mocha" %>
-        <%= asset_path('mocha_raw') %> alt="Cortado" style="width:100%">
-      <% when "Cold Brew" %>
-        <%= asset_path('coldbrew_raw') %> alt="Cortado" style="width:100%">
-      <% else %>
-        <%= asset_path('coldbrew_raw') %> alt="Cortado" style="width:100%">
-    <% end %>
-    <div class="container">
-      <h3><%= order.item_name %></h3>
-        <p>
-        <% case order.size %>
-          <% when 1 %>
+  <div class="main-container">
+    <h2>Drinks Submitted to Store</h2>
+  </div>
+  <div class="main-container">
+    <% if !@sentOrder.any? %>
+      <p>No drinks here!  Why don't you <%= link_to "order one to get started? :)", new_ordering_path, :class => 'action new', :method => :get %></p>
+    <% else %>
+      <% @sentOrder.each do |order| %>
+        <div class="card">
+          <img src=
+        <% case order.item_name %>
+          <% when "Coffee" %>
+            <%= asset_path('coffee_raw') %> alt="Cortado" style="width:100%">
+          <% when "Americano" %>
+          <%= asset_path('americano_raw') %> alt="Cortado" style="width:100%">
+          <% when "Latte" %>
+          <%= asset_path('latte_raw') %> alt="Cortado" style="width:100%">
+          <% when "Cortado" %>
+          <%= asset_path('cortado_raw') %> alt="Cortado" style="width:100%">
+          <% when "Cappuccino" %>
+          <%= asset_path('cappuccino_raw') %> alt="Cortado" style="width:100%">
+          <% when "Mocha" %>
+          <%= asset_path('mocha_raw') %> alt="Cortado" style="width:100%">
+          <% when "Cold Brew" %>
+          <%= asset_path('coldbrew_raw') %> alt="Cortado" style="width:100%">
+        <% else %>
+          <%= asset_path('coldbrew_raw') %> alt="Cortado" style="width:100%">
+        <% end %>
+        <div class="container">
+          <h3><%= order.item_name %></h3>
+          <p>
+            <% case order.size %>
+            <% when 1 %>
             <%= "Small" %>
-          <% when 2 %>
+            <% when 2 %>
             <%= "Medium" %>
-          <% when 3 %>
+            <% when 3 %>
             <%= "Large" %>
-          <% when 4 %>
+            <% when 4 %>
             <%= "Massive" %>
-        <% end %>
-        </p>
- 
-        <% if order.extraEspressoShots > 1 %>
-          <p>
-           <%= "#{order.extraEspressoShots} Extra Shots" %>
-          </p>
-
-          <% elsif order.extraEspressoShots == 1 %>
-          <p>
-           <%= "#{order.extraEspressoShots} Extra Shot" %>
-          </p>
-          <% else %>
-        <% end %>
-
-        <p>
-        <% case order.milkType %>
-          <% when "None" %>
-            <%= "No Milk" %>
-          <% when "Heavy Cream"%>
-            <%= order.milkType %>
-          <% else %>
-            <%= "#{order.milkType} Milk"%>
           <% end %>
         </p>
-
-
-        <% if order.flavor != "" %>
+        <% if order.extraEspressoShots > 1 %>
           <p>
-            <%= order.flavor %>
+            <%= "#{order.extraEspressoShots} Extra Shots" %>
           </p>
+        <% elsif order.extraEspressoShots == 1 %>
+          <p>
+            <%= "#{order.extraEspressoShots} Extra Shot" %>
+          </p>
+        <% else %>
         <% end %>
-
-        <% if order.decaf %>
-         <p>
-           <%= "Decaf" %>
-         </p>
+        <p>
+          <% case order.milkType %>
+          <% when "None" %>
+          <%= "No Milk" %>
+          <% when "Heavy Cream"%>
+          <%= order.milkType %>
+        <% else %>
+          <%= "#{order.milkType} Milk"%>
         <% end %>
-          </div>
-          </div>
-    <% end %>
+      </p>
+      <% if order.flavor != "" %>
+        <p>
+          <%= order.flavor %>
+        </p>
+      <% end %>
+      <% if order.decaf %>
+        <p>
+          <%= "Decaf" %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+<% end %>
 </div>
 <br />
 <br />
-
+<div class="main-container">
   <h2>Drinks In Progress</h2>
-    <table class="listing" summary="Order list">
+</div>
+<div class="main-container">
+  <% if !@acceptedOrder.any? %>
+    <p>The imaginary store hasn't started your order yet :( </p>
+  <% else %>
     <% @acceptedOrder.each do |order| %>
-    <tr><th><%= order.item_name %></th></tr>
-    <tr><td><%= order.size %></td></tr>
-    <tr><td>
-      <% if order.extraEspressoShots >=1 %>
-      <%= order.extraEspressoShots %>
+      <div class="card">
+        <img src=
+        <% case order.item_name %>
+          <% when "Coffee" %>
+            <%= asset_path('coffee_raw') %> alt="Cortado" style="width:100%">
+        <% when "Americano" %>
+        <%= asset_path('americano_raw') %> alt="Cortado" style="width:100%">
+        <% when "Latte" %>
+        <%= asset_path('latte_raw') %> alt="Cortado" style="width:100%">
+        <% when "Cortado" %>
+        <%= asset_path('cortado_raw') %> alt="Cortado" style="width:100%">
+        <% when "Cappuccino" %>
+        <%= asset_path('cappuccino_raw') %> alt="Cortado" style="width:100%">
+        <% when "Mocha" %>
+        <%= asset_path('mocha_raw') %> alt="Cortado" style="width:100%">
+        <% when "Cold Brew" %>
+        <%= asset_path('coldbrew_raw') %> alt="Cortado" style="width:100%">
+      <% else %>
+        <%= asset_path('coldbrew_raw') %> alt="Cortado" style="width:100%">
       <% end %>
-    </td></tr>
-    <tr><td><%= order.milkType %></td></tr>
-    <tr><td>
-      <% if order.flavor != "" %>
-      <%= order.flavor %>
+      <div class="container">
+        <h3><%= order.item_name %></h3>
+        <p>
+          <% case order.size %>
+          <% when 1 %>
+          <%= "Small" %>
+          <% when 2 %>
+          <%= "Medium" %>
+          <% when 3 %>
+          <%= "Large" %>
+          <% when 4 %>
+          <%= "Massive" %>
+        <% end %>
+      </p>
+      <% if order.extraEspressoShots > 1 %>
+        <p>
+          <%= "#{order.extraEspressoShots} Extra Shots" %>
+        </p>
+      <% elsif order.extraEspressoShots == 1 %>
+        <p>
+          <%= "#{order.extraEspressoShots} Extra Shot" %>
+        </p>
+      <% else %>
       <% end %>
-    </td></tr>
-      <tr><td>
-      <% if order.decaf %>
-      <%= "Decaf" %>
+      <p>
+        <% case order.milkType %>
+        <% when "None" %>
+        <%= "No Milk" %>
+        <% when "Heavy Cream"%>
+        <%= order.milkType %>
+      <% else %>
+        <%= "#{order.milkType} Milk"%>
       <% end %>
-    </td></tr>
+    </p>
+    <% if order.flavor != "" %>
+      <p>
+        <%= order.flavor %>
+      </p>
     <% end %>
-  </table>
-
+    <% if order.decaf %>
+      <p>
+        <%= "Decaf" %>
+      </p>
+    <% end %>
+  </div>
+</div>
+<% end %>
+<% end %>
+</div>
 <br />
 <br />
-
+<div class="main-container">
   <h2>Completed Orders</h2>
-    <table class="listing" summary="Order list">
-    </tr>
+</div>
+<div class="main-container">
+  <% if !@readyOrder.any? %>
+    <p>You have no completed orders!  Let's fix that <%= link_to "by starting one!", new_ordering_path, :class => 'action new', :method => :get %> </p>
+  <% else %>
     <% @readyOrder.each do |order| %>
-    <tr><th><%= order.item_name %></th></tr>
-    <tr><td><%= order.size %></td></tr>
-    <tr><td>
-      <% if order.extraEspressoShots >=1 %>
-      <%= order.extraEspressoShots %>
+      <div class="card">
+        <img src=
+        <% case order.item_name %>
+          <% when "Coffee" %>
+            <%= asset_path('coffee_raw') %> alt="Cortado" style="width:100%">
+        <% when "Americano" %>
+        <%= asset_path('americano_raw') %> alt="Cortado" style="width:100%">
+        <% when "Latte" %>
+        <%= asset_path('latte_raw') %> alt="Cortado" style="width:100%">
+        <% when "Cortado" %>
+        <%= asset_path('cortado_raw') %> alt="Cortado" style="width:100%">
+        <% when "Cappuccino" %>
+        <%= asset_path('cappuccino_raw') %> alt="Cortado" style="width:100%">
+        <% when "Mocha" %>
+        <%= asset_path('mocha_raw') %> alt="Cortado" style="width:100%">
+        <% when "Cold Brew" %>
+        <%= asset_path('coldbrew_raw') %> alt="Cortado" style="width:100%">
+      <% else %>
+        <%= asset_path('coldbrew_raw') %> alt="Cortado" style="width:100%">
       <% end %>
-    </td></tr>
-    <tr><td><%= order.milkType %></td></tr>
-    <tr><td>
-      <% if order.flavor != "" %>
-      <%= order.flavor %>
+      <div class="container">
+        <h3><%= order.item_name %></h3>
+        <p>
+          <% case order.size %>
+          <% when 1 %>
+          <%= "Small" %>
+          <% when 2 %>
+          <%= "Medium" %>
+          <% when 3 %>
+          <%= "Large" %>
+          <% when 4 %>
+          <%= "Massive" %>
+        <% end %>
+      </p>
+      <% if order.extraEspressoShots > 1 %>
+        <p>
+          <%= "#{order.extraEspressoShots} Extra Shots" %>
+        </p>
+      <% elsif order.extraEspressoShots == 1 %>
+        <p>
+          <%= "#{order.extraEspressoShots} Extra Shot" %>
+        </p>
+      <% else %>
       <% end %>
-    </td></tr>
-      <tr><td>
-      <% if order.decaf %>
-      <%= "Decaf" %>
+      <p>
+        <% case order.milkType %>
+        <% when "None" %>
+        <%= "No Milk" %>
+        <% when "Heavy Cream"%>
+        <%= order.milkType %>
+      <% else %>
+        <%= "#{order.milkType} Milk"%>
       <% end %>
-    </td></tr>
+    </p>
+    <% if order.flavor != "" %>
+      <p>
+        <%= order.flavor %>
+      </p>
     <% end %>
-  </table>
+    <% if order.decaf %>
+      <p>
+        <%= "Decaf" %>
+      </p>
+    <% end %>
+  </div>
+</div>
+<% end %>
+<% end %>
+</div>
 </div>

@@ -1,3 +1,19 @@
+@font-face {
+  font-family: 'SFProText-Heavy';
+  src: url('SFProText-Heavy.eot?#iefix') format('embedded-opentype'),  url('SFProText-Heavy.otf')  format('opentype'),
+	     url('SFProText-Heavy.woff') format('woff'), url('SFProText-Heavy.ttf')  format('truetype'), url('SFProText-Heavy.svg#SFProText-Heavy') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SFProDisplay-Light';
+  src: url('SFProDisplay-Light.eot?#iefix') format('embedded-opentype'),  url('SFProDisplay-Light.otf')  format('opentype'),
+	     url('SFProDisplay-Light.woff') format('woff'), url('SFProDisplay-Light.ttf')  format('truetype'), url('SFProDisplay-Light.svg#SFProDisplay-Light') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* Flex the drinks. */
 .main-container {
   display: flex;
@@ -49,8 +65,21 @@
 
 /* CHECKED STYLES */
 .card-ordering [type=radio]:checked + img {
-  outline: 2px solid #f00;
+  outline: 4px solid rgb(143, 75, 75);
 }
 [type=radio]:checked + label {
-  outline: 2px solid #f00;
+  outline: 4px solid rgb(143, 75, 75);
+}
+
+h1, h2, h3, .action, .key {
+  font-family: SFProText-Heavy;
+}
+
+label, p  {
+  font-family: SFProDisplay-Light;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }

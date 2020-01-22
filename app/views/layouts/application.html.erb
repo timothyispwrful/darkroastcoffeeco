@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Darkroast</title>
+    <title>Darkroast Coffee Co.</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -13,7 +13,7 @@
 
   <div class="container">
   <header>
-  <h1>Darkroast Coffee Co.<%= button_to "Let's Start A New Order!", new_ordering_path, :class => 'action new', :method => :get %></h1>
+  <h1><%= link_to "Darkroast Coffee Co.", root_path, :method => :get %><%= button_to "Let's Start A New Order!", new_ordering_path, :class => 'action new', :method => :get %></h1>
   <h5>A demo CRUD application running on AWS for an imaginary coffee shop, on Rails.</h5>
   </header>
 
